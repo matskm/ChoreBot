@@ -14,7 +14,8 @@
         android:id="@+id/button_chore1"
         android:text="@string/button_chore1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="playSound1" />
 
     <Button
         android:id="@+id/button_chore2"
