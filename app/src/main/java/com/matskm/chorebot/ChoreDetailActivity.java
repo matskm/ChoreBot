@@ -2,6 +2,7 @@ package com.matskm.chorebot;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.matskm.chorebotlib.Chore;
 
 public class ChoreDetailActivity extends AppCompatActivity {
 
