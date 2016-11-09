@@ -5,4 +5,14 @@ package com.matskm.chorebotlib;
  */
 
 public class Chore {
+
+    public Chore(String Title, String Description, String AudioFile){
+        _Title = Title;
+        _Description = Description;
+        _AudioFile = AudioFile;
+    }
+
+    private String _Title;
+    private String _Description;
+    private String _AudioFile;
 }
