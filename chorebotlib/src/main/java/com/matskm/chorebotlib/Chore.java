@@ -15,4 +15,9 @@ public class Chore {
     private String _Title;
     private String _Description;
     private String _AudioFile;
+
+    public String Title(){
+        return _Title;
+    }
+
 }

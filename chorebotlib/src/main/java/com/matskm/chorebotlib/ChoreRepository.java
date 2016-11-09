@@ -33,4 +33,14 @@ public class ChoreRepository {
         return _choreList.size() - 1;
     }
 
+    public static Chore GetChore(Integer pos){
+        try{
+            return _choreList.get(pos);
+        }
+        catch(IndexOutOfBoundsException e){
+            throw e;
+        }
+
+    }
+
 }
