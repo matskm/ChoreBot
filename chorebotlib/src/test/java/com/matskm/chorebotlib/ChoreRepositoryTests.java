@@ -16,17 +16,26 @@ public class ChoreRepositoryTests {
     private Chore _theChore1;
     private Chore _theChore2;
 
-    private void setupTests(){
+    private void setupTestsWithoutAddingChores(){
         _choreRepo = ChoreRepository.getInstance();
         _choreRepo.cleardownRepository();
         _theChore1 = new Chore("BedroomTidy","Tidy up the bedroom","example.mp3");
         _theChore2 = new Chore("SchoolRoomTidy","Tidy up the school room","example2.mp3");
     }
 
+    private void setupTests(){
+        _choreRepo = ChoreRepository.getInstance();
+        _choreRepo.cleardownRepository();
+        _theChore1 = new Chore("BedroomTidy","Tidy up the bedroom","example.mp3");
+        _theChore2 = new Chore("SchoolRoomTidy","Tidy up the school room","example2.mp3");
+        _choreRepo.AddChore(_theChore1);
+        _choreRepo.AddChore(_theChore2);
+    }
+
     @Test
     public void AddChore_GivenEmptyRepoAndValidChore_ResultsPositionZeroReturned() {
 
-        setupTests();
+        setupTestsWithoutAddingChores();
         Integer return_int = _choreRepo.AddChore(_theChore1);
         assertEquals((Integer)0, return_int);
 
@@ -35,7 +44,7 @@ public class ChoreRepositoryTests {
     @Test
     public void AddChore_GivenEmptyRepoAndTwoValidChores_ResultsPositionOneReturned() {
 
-        setupTests();
+        setupTestsWithoutAddingChores();
 
         Integer return_int = _choreRepo.AddChore(_theChore1);
         return_int = _choreRepo.AddChore(_theChore2);
@@ -66,6 +75,39 @@ public class ChoreRepositoryTests {
         Chore rtn_chore = _choreRepo.GetChore(position);
 
         assertEquals(rtn_chore.Title(),_theChore1.Title());
+
+    }
+
+    @Test
+    public void GetChore_GivenRepoWithTwoElementsSeekingSecond_ResultsInSecondElementReturned() {
+        setupTests();
+
+        Integer position = _choreRepo.AddChore(_theChore1);
+        position = _choreRepo.AddChore(_theChore2);
+
+        Chore rtn_chore = _choreRepo.GetChore(position);
+
+        assertEquals(rtn_chore.Title(),_theChore2.Title());
+
+    }
+
+
+    @Test
+    public void UpdateChore_GivenRepoWithOneElement_ResultsInVerifiedUpdatedChore() {
+        setupTests();
+
+        Integer pos = 0;
+
+        String updated_title = "TidyAnotherRoom";
+        Chore updated_chore = _choreRepo.GetChore(pos);
+        updated_chore.SetTitle(updated_title);
+
+        _choreRepo.UpdateChore(pos,updated_chore);
+
+        Chore result_chore = _choreRepo.GetChore(pos);
+
+        assertEquals(updated_title,result_chore.Title());
+
 
     }
 

@@ -43,4 +43,8 @@ public class ChoreRepository {
 
     }
 
+    public static void UpdateChore(Integer pos, Chore chore){
+        _choreList.set(pos,chore);
+    }
+
 }

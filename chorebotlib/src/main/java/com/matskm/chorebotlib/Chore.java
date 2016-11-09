@@ -20,4 +20,8 @@ public class Chore {
         return _Title;
     }
 
+    public void SetTitle(String title){
+        _Title = title;
+    }
+
 }
