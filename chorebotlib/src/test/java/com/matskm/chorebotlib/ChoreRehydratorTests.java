@@ -11,8 +11,14 @@ public class ChoreRehydratorTests {
 
     @Test
     public void rehydrate_GivenHardCodedRehydratorAndEmptyRepo_ResultsInCorrectRepo() {
-        // create a HardCodedRehydrator, and use it to rehydrate an empty repo... assert the size.
-        // Intefrace for rehydrate() method should be the number of elements its rehyrdated.
+        
+        ChoreRepository choreRepo = ChoreRepository.getInstance();
+
+        ChoreRehydratorHardCoded rh = new ChoreRehydratorHardCoded();
+        int r_size = rh.rehyrdrate(choreRepo);
+
+        assertEquals(r_size,4);
+
     }
 
 
