@@ -33,7 +33,7 @@ public class ChoreRepository {
         return _choreList.size() - 1;
     }
 
-    public static Chore GetChore(Integer pos){
+    public static Chore GetChore(int pos){
         try{
             return _choreList.get(pos);
         }
@@ -43,8 +43,22 @@ public class ChoreRepository {
 
     }
 
-    public static void UpdateChore(Integer pos, Chore chore){
+    public static void UpdateChore(int pos, Chore chore){
         _choreList.set(pos,chore);
     }
+
+    public static void RemoveChore(int pos){
+        _choreList.remove(pos);
+    }
+
+    public static int Size(){
+        return _choreList.size();
+    }
+
+    public static void Print(String prefix) {
+        System.out.println(prefix + _choreList);
+    }
+
+
 
 }

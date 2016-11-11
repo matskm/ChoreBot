@@ -36,8 +36,8 @@ public class ChoreRepositoryTests {
     public void AddChore_GivenEmptyRepoAndValidChore_ResultsPositionZeroReturned() {
 
         setupTestsWithoutAddingChores();
-        Integer return_int = _choreRepo.AddChore(_theChore1);
-        assertEquals((Integer)0, return_int);
+        int return_int = _choreRepo.AddChore(_theChore1);
+        assertEquals(0, return_int);
 
     }
 
@@ -46,11 +46,12 @@ public class ChoreRepositoryTests {
 
         setupTestsWithoutAddingChores();
 
-        Integer return_int = _choreRepo.AddChore(_theChore1);
+        int return_int = _choreRepo.AddChore(_theChore1);
         return_int = _choreRepo.AddChore(_theChore2);
-        assertEquals((Integer)1, return_int);
+        assertEquals(1, return_int);
 
     }
+
 
 
 //    @Test
@@ -70,7 +71,7 @@ public class ChoreRepositoryTests {
     public void GetChore_GivenRepoWithOneElement_ResultsInSameElementReturned() {
         setupTests();
 
-        Integer position = _choreRepo.AddChore(_theChore1);
+        int position = _choreRepo.AddChore(_theChore1);
 
         Chore rtn_chore = _choreRepo.GetChore(position);
 
@@ -82,7 +83,7 @@ public class ChoreRepositoryTests {
     public void GetChore_GivenRepoWithTwoElementsSeekingSecond_ResultsInSecondElementReturned() {
         setupTests();
 
-        Integer position = _choreRepo.AddChore(_theChore1);
+        int position = _choreRepo.AddChore(_theChore1);
         position = _choreRepo.AddChore(_theChore2);
 
         Chore rtn_chore = _choreRepo.GetChore(position);
@@ -96,7 +97,7 @@ public class ChoreRepositoryTests {
     public void UpdateChore_GivenRepoWithOneElement_ResultsInVerifiedUpdatedChore() {
         setupTests();
 
-        Integer pos = 0;
+        int pos = 0;
 
         String updated_title = "TidyAnotherRoom";
         Chore updated_chore = _choreRepo.GetChore(pos);
@@ -108,6 +109,29 @@ public class ChoreRepositoryTests {
 
         assertEquals(updated_title,result_chore.Title());
 
+
+    }
+
+    @Test
+    public void RemoveChore_GivenRepoWithTwoChores_ResultsInRepoWithOneChore() {
+        setupTests();
+
+        assertEquals(2,_choreRepo.Size());
+        _choreRepo.RemoveChore(1);
+        int s = _choreRepo.Size();
+        assertEquals(1,_choreRepo.Size());
+
+    }
+
+    @Test
+    public void RemoveChore_GivenRepoWithTwoChoresAndTwoRemoves_ResultsInRepoWithNoChores() {
+        setupTests();
+
+        assertEquals(2,_choreRepo.Size());
+        _choreRepo.RemoveChore(1);
+        _choreRepo.RemoveChore(0);
+        int s = _choreRepo.Size();
+        assertEquals(0,_choreRepo.Size());
 
     }
 
