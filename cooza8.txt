@@ -4,4 +4,6 @@ void main(int i){
   c = b + 5;
   // Oh my goodness!
   c++;
+  // Now we are getting serious..
+  c--;
 }
