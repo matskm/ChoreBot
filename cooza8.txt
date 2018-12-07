@@ -1,1 +1,3 @@
-this is a funky file
+void main(int i){
+  int b = i+1;
+}
